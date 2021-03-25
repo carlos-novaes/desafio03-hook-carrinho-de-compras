@@ -74,6 +74,8 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
         const newCart = cart.filter(p => p.id !== productId);
         localStorage.setItem('@RocketShoes:cart', JSON.stringify(newCart));
         setCart(newCart);
+      } else {
+        throw new Error('produto não existe');
       }
     } catch {
       toast.error('Erro na remoção do produto');
